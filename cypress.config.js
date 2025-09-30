@@ -1,18 +1,18 @@
-const { defineConfig } = require('cypress');
+const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    specPattern: 'cypress/e2e/**/*.cy.js',
+    specPattern: "cypress/e2e/**/*.cy.js",
     supportFile: false,
     defaultCommandTimeout: 8000,
-    reporter: 'mochawesome',
+    reporter: "mochawesome",
     reporterOptions: {
-      reportDir: 'cypress/reports/json',
+      reportDir: "cypress/reports/json",
       overwrite: true,
       html: false,
-      json: true
-    }
+      json: true,
+    },
   },
   video: false,
-  screenshotsFolder: 'cypress/screenshots'
+  screenshotsFolder: "cypress/screenshots",
 });
