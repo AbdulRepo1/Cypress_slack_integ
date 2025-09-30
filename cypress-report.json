@@ -22,7 +22,7 @@
     √  Verify google search box exist
 
 
-  1 passing (5s)
+  1 passing (6s)
 
 [mochawesome] Report JSON saved to C:\Users\X1\Desktop\autoTest\Cypress_slack_integ\cypress\reports\json\mochawesome.json
 
@@ -49,7 +49,7 @@
 
        Spec                                              Tests  Passing  Failing  Pending  Skipped  
   ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │ √  google.cy.js                             00:05        1        1        -        -        - │
+  │ ✔  google.cy.js                             00:05        1        1        -        -        - │
   └────────────────────────────────────────────────────────────────────────────────────────────────┘
-    √  All specs passed!                        00:05        1        1        -        -        -  
+    ✔  All specs passed!                        00:05        1        1        -        -        -  
 
