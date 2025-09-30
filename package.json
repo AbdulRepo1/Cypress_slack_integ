@@ -5,7 +5,7 @@
   "scripts": {
     "cypress:open": "npx cypress open",
     "test": "npx cypress run --headless",
-    "test:slack:report": "node slackReporter.js"
+    "test:slack": "node slackReporter.js"
     
   },
   "devDependencies": {
