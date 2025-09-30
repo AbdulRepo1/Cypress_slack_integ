@@ -69,7 +69,7 @@ async function post(message) {
     const duration = (stats.duration / 1000).toFixed(2);
 
     // Build message
-    let message = `\u1F4C *Cypress Test Report* \n
+    let message = ` *Cypress Test Report* \n
     \u2705 Passed: ${passes}  
     \u274C Failed: ${failures}  
     📝 Total: ${total}  
