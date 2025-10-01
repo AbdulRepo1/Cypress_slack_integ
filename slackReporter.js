@@ -28,6 +28,7 @@
 //     process.exit(1);
 //   }
 // })();
+
 const axios = require('axios');
 const { execSync } = require('child_process');
 const fs = require('fs');
@@ -53,13 +54,13 @@ async function post(message) {
     console.log(" Running Cypress tests...");
 
     // Run Cypress with JSON reporter
-    execSync("npx cypress run --headless --reporter json > cypress-report.json", {
+    execSync("npx cypress run --headless ", {
       stdio: "inherit",
       shell: true
     });
 
     // Read JSON report
-    const report = JSON.parse(fs.readFileSync("cypress/reports/json/mochawesome.json", "utf8"));
+    const report = JSON.parse(fs.readFileSync("./cypress/reports/mochawesome.json", "utf8"));
 
     // Extract summary
     const stats = report.stats;
