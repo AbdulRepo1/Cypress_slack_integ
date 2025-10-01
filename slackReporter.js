@@ -31,7 +31,7 @@
 const axios = require('axios');
 const { execSync } = require('child_process');
 const fs = require('fs');
-require('dotenv').config();
+
 
 const webhook = process.env.SLACK_WEBHOOK_URL;
 if (!webhook) {
