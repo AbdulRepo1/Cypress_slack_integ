@@ -9,7 +9,7 @@ steps:
         command: |
           echo "Installing dependencies..."
           npm ci  # Use 'npm ci' for cleaner CI installs (faster than 'npm install')
-          echo "✅ Dependencies installed!"
+          echo "Dependencies installed!"
           
           # Install system dependencies for Cypress headless on Linux (Xvfb + libs)
           echo "Installing Xvfb and Cypress dependencies..."
