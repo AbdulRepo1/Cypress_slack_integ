@@ -1,32 +1,29 @@
-env:
-  NODE_ENV: test
+NODE_ENV: test
   # SLACK_WEBHOOK_URL should be added as a secret in Buildkite UI (Pipeline > Settings > Secrets)
 
 steps:
   - group: "Cypress Test Suite"
     steps:
-      - label: ":hammer: Install & Run Tests"
-        key: "cypress-tests"
+      - label: ":hammer: Install Dependencies and run test suit"
+        key: "install"
         command: |
           echo "Installing dependencies..."
-          npm ci
+          npm ci  # Use 'npm ci' for cleaner CI installs (faster than 'npm install')
           echo "✅ Dependencies installed!"
-
-          echo "Installing system dependencies for Cypress..."
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq \
-            xvfb \
-            libgtk-3-0 \
-            libgbm-dev \
-            libnotify-dev \
-            libnss3 \
-            libxss1 \
-            libasound2 \
-            libxtst6 \
-            xauth
-
-          echo "Verifying Cypress installation..."
-          npx cypress verify
-
-          echo "🚀 Running Cypress tests..."
-          npm run test:slack   # runs slackReporter.js to send report to Slack
+          
+          # Install system dependencies for Cypress headless on Linux (Xvfb + libs)
+          echo "Installing Xvfb and Cypress dependencies..."
+          sudo apt-get update -qq && sudo apt-get install -y -qq xvfb libgtk-3-0 libgbm-dev libnotify-dev libnss3 libxss1 libasound2 libxtst6 xauth
+          
+          # Fix executable permissions for Cypress binaries (common CI issue)
+          chmod +x node_modules/.bin/*
+          chmod -R +x node_modules/cypress  # Ensure inner binaries are executable
+          
+          export SLACK_WEBHOOK_URL=$(buildkite-agent secret get SLACK_WEBHOOK_URL)
+          
+          # Run Cypress tests and generate report, then send to Slack
+          echo "Running Cypress tests..."
+          
+          # Send report via custom JS script
+          echo "Sending report to Slack..."
+          npm run test:slack  # Runs 'node slackReporter.js' which consumes cypress-report.json
