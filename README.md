@@ -89,6 +89,14 @@ steps:
     env:
       SLACK_WEBHOOK_URL: "${SLACK_WEBHOOK_URL}"
 ```
+
+Load Yml file content to pipeline
+```  
+steps:
+  - label: ":pipeline: Upload Pipeline"
+    command: buildkite-agent pipeline upload .buildkite/pipeline.yml
+
+```
 - Scheduling:
   - In Buildkite pipeline settings → Schedules → Add schedule (cron) to run pipeline on a schedule.
   - Or use Buildkite API to create scheduled builds.
