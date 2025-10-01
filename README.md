@@ -90,7 +90,7 @@ steps:
       SLACK_WEBHOOK_URL: "${SLACK_WEBHOOK_URL}"
 ```
 
-Load Yml file content to pipeline
+-Load Yml file content to pipeline
 ```  
 steps:
   - label: ":pipeline: Upload Pipeline"
@@ -102,9 +102,9 @@ steps:
   - Or use Buildkite API to create scheduled builds.
 
 Files of interest
-- `cypress/e2e/google.cy.js` — the test (visits google.com, asserts `input[name="q"]` exists)
+- `cypress/e2e/google.cy.js` — the test (visits google.com, asserts `textarea[title="search"]` exists)
 - `cypress.config.js` — Cypress configuration (mochawesome reporter, report dir)
-- `cypress/reports/json/mochawesome.json` — generated mochawesome JSON report
+- `cypress/reports/mochawesome.json` — generated mochawesome JSON report
 - `slackReporter.js` — script that parses mochawesome JSON and posts to Slack
 - `package.json` — scripts:
   - `npm test` → runs `npx cypress run --headless`
